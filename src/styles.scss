@@ -1,0 +1,571 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --green-color: #54a546;
+    --blue-color: #2e3069;
+    --dark-blue-color: #242554;
+  
+    --light-color: #f3f3f3;
+    --light-gray-color: #f7f8fa;
+    --light-dark-color: #212529;
+    --light-Ndark-color: #303030;
+  
+    --dark-color: #212429;
+    --dark-gray-color: #898989;
+    --dark-light-color: #ffffff;
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .form-control:focus {
+    box-shadow: none !important;
+  }
+
+  body {
+    font-family: "Poppins";
+  }
+  a,
+  a:hover {
+    text-decoration: none;
+    
+  }
+  
+  a,button{
+    cursor: pointer;
+  }
+  .rounded-3 {
+    border-radius: 10px !important;
+  }
+  .wrapper {
+    max-width: 450px;
+    
+  }
+  .wrapper h6 {
+    font-size: 14px;
+  }
+  .wrapper h5 {
+      font-size: 1rem;
+  }
+  .wrapper small {
+    font-size: 12px;
+  }
+  .wrapper-head a {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+  }
+  
+  .wrapper .card {
+    min-height: 50px;
+  }
+  .wrapper .card input {
+    width: calc(100% - 20px);
+  }
+  
+  .coin-list-popup{
+    max-height: calc(100vmin - 250px);
+  }
+  .coin-list-popup img {
+    max-width: 25px;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  .swap-arrow {
+    z-index: 1;
+    border-width: 3px;
+    border-style: solid;
+  }
+  .onlyswap fieldset > span {
+    font-size: 13px;
+  }
+  .onlyswap fieldset > small {
+    font-size: 12px;
+  }
+  .onlyswap figcaption {
+    font-size: 10px;
+    top: -10px;
+    left: -1px;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 20px 20px 20px 0;
+  }
+  
+  .inner-section {
+    padding-top: 100px;
+  }
+
+  .rounded-circle {
+    width: 25px;
+    height: 25px;
+  }
+
+  nav .sub-menu a{
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .swap-arrow{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+@media(min-width:992px){
+
+  .theme-chang{
+    left: 15px;
+    bottom: 0px;
+  }
+}
+  
+  // ============= LIGHT THEME CSS START ===============
+  
+  body.light-theme{
+    .theme-chang > li > button {
+      color: var(--light-dark-color);
+    }
+    .theme-chang > li {
+      background-color: var(--white-color);
+    }
+    .theme-chang > li > .Light {
+      background-color: var(--light-color);
+    }
+
+    .footer-link {
+      color: var(--light-dark-color);
+    }
+  }
+  
+  .table-list > div:last-child{
+    border-bottom: none !important;
+  }
+  
+  .table-list {
+    color: #898989;
+    background-color: #f3f3f3;
+  }
+
+  body,
+  body.light-theme,
+  body.fun-theme {
+    background-color: var(--light-color);
+    nav{
+      background-color: var(--light-color);
+    }
+    nav .navbar-nav > li {
+      background-color: var(--white-color);
+    }
+    nav .navbar-nav > li > a.active,
+    nav .sub-menu a:hover {
+      background-color: var(--light-color);
+    }
+    nav button,
+    nav button:focus,
+    nav button:hover {
+      background-color: var(--white-color);
+      color: var(--green-color);
+      border-color: var(--green-color);
+      box-shadow: 3px 4px 1px 1px var(--green-color);
+    }
+    nav .sub-menu{
+      background-color: var(--white-color);
+    }
+    nav .sub-menu a{
+      color: var(--black-color);
+    }
+  
+    .wrapper{
+      background-color: var(--white-color);
+      color: var(--black-color);
+    }
+    .wrapper a{
+      color: var(--black-color);
+    }
+    .wrapper.simple-swap {
+      background-color: var(--white-color);
+    }
+    .wrapper-head a {
+      color: var(--light-Ndark-color);
+    }
+    .wrapper-head a.active {
+      border-color: var(--green-color);
+    }
+    .wrapper.simple-swap .card {
+      background-color: var(--light-gray-color);
+    }
+    .wrapper.simple-swap .card small,
+    .wrapper.simple-swap  h6 {
+      color: var(--dark-gray-color);
+    }
+
+    .wrapper .outline-button {
+      color: var(--green-color);
+      border-style: solid;
+      border-width: 1.5px;
+      border-color: var(--green-color);
+      border-radius: 5px;
+      padding: 0.1rem 0.15rem;
+    }
+
+    .swap-arrow {
+      color: var(--dark-gray-color);
+      border-color: var(--white-color);
+      background-color: var(--light-gray-color);
+    }
+    .swap-arrow:hover {
+      background-color: var(--dark-gray-color);
+      border-color: var(--dark-gray-color);
+      color: var(--light-gray-color);
+    }
+    .swap-button {
+      background-color: var(--green-color);
+      color: var(--white-color);
+    }
+    .onlyswap {
+      background-color: var(--light-color);
+    }
+    .onlyswap figcaption {
+      background-color: var(--green-color);
+      color: var(--white-color);
+    }
+    .uniswap-list {
+      background-color: var(--light-gray-color);
+    }
+    .setting-inner{
+      background-color:var(--light-color);    
+    }
+    .setting-inner h6{    
+      color: var(--black-color);
+    }
+    .setting-inner h6 + small{
+      color: var(--dark-gray-color);
+    }
+    
+  }
+  
+  // ============= DARK THEME CSS START ===============
+  
+  
+  body.dark-theme {
+    background-color: var(--dark-color);
+  
+    .table-list {
+      color: #fff;
+      background-color: #212429;     
+    }
+    .table-list > div{
+      border-bottom-color: #898989 !important;
+    }
+
+    .theme-chang > li > button {
+      color: var(--white-color);
+    }
+    .theme-chang > li {
+      background-color: var(--dark-gray-color);
+    }
+    .theme-chang > li > .Dark {
+      background-color: var(--light-dark-color);
+    }
+
+    .footer-link {
+      color: var(--white-color);
+    }
+  
+    .onlyswap figcaption {
+      background-color: var(--blue-color);
+      color: var(--white-color);
+    }
+
+    nav{
+      background-color: var(--dark-color);
+    }
+    nav .navbar-nav > li {
+      background-color: var(--dark-gray-color);
+    }
+    nav .navbar-nav > li > a {
+      color: var(--white-color) !important;
+    }
+    nav .navbar-nav > li > a.active {
+      background-color: var(--light-dark-color);
+      color: var(--white-color) !important;
+    }
+    nav button,
+    nav button:focus,
+    nav button:hover {
+      background-color: var(--blue-color);
+      color: var(--white-color);
+      border-color: var(--blue-color);
+      box-shadow: 3px 2px 0px 1px var(--dark-blue-color);
+    }
+    nav .sub-menu{
+      background-color: var(--dark-gray-color);
+    }
+    nav .sub-menu a{
+      color: var(--white-color);
+    }
+    nav .sub-menu a:hover {
+      background-color: var(--black-color);
+    }
+    .wrapper.simple-swap{
+      background-color: var(--light-dark-color);
+      border-style: solid;
+      border-color: var(--dark-gray-color);
+      border-radius: 1rem !important;
+    }
+    .wrapper-head a{
+      color: var(--white-color);
+    }
+    .wrapper-head a.active{
+      border-color: var(--blue-color);
+    }
+
+    .wrapper.simple-swap .card{
+      background-color: var(--dark-gray-color);
+      color: var(--white-color);
+    }
+    .wrapper.simple-swap .card small{
+      color: var(--white-color);
+    }
+    .wrapper.simple-swap .card input{
+      color: var(--white-color);
+    }
+
+    .wrapper .outline-button {
+      color: var(--blue-color);
+      border-style: solid;
+      border-width: 1.5px;
+      border-color: var(--blue-color);
+      border-radius: 5px;
+      padding: 0.1rem 0.15rem;
+    }
+
+    .swap-arrow {
+      color: var(--white-color);
+      border-color: var(--dark-gray-color);
+      background-color: var(--light-dark-color);
+  }
+  .swap-arrow:hover {
+    background-color: var(--white-color);
+    border-color: var(--white-color);
+    color: var(--light-dark-color);
+}
+  .wrapper.simple-swap h6{
+    color: var(--white-color);
+  }
+  .onlyswap {
+    background-color: var(--light-dark-color);
+  }
+  .uniswap-list{
+    background-color: var(--light-dark-color);
+    color: var(--white-color);
+  
+  }
+    .swap-button{
+      background-color: var(--blue-color);
+      color: var(--white-color);
+    }
+    .wrapper{
+      color: var(--white-color);
+      background-color: var(--light-dark-color);
+      border-style: solid;
+      border-color: var(--dark-gray-color);
+      border-radius: 1rem !important;
+    }
+    .wrapper a
+    {
+      color: var(--white-color);
+    }
+    .tabs-custm-pill > ul.nav-pills .nav-link,
+    .btn-minit{
+      color: var(--white-color) !important;
+    }
+    .tabs-custm-pill > ul.nav-pills .nav-link.active{
+      border-color: var(--blue-color);
+    }
+    .btn-minit + ul>li>a{
+      color: #000;
+    }
+    
+    .setting-inner{
+      background-color:var(--dark-gray-color);    
+    }
+    .setting-inner h6{    
+      color: var(--white-color);
+    }
+    .setting-inner h6 + small{
+      color: var(--dark-gray-color);
+    }
+    .navbar-light .navbar-toggler-icon{
+      filter: invert(1);
+    }
+    .text-muted{
+      color: #000 !important;
+    }
+    .navbar-pills-custm{
+      background-color: #6c757d !important;
+    }
+    .chart-section,
+    .chart-section>.chart-dropdwon>button{
+      color: #fff;
+    }
+  }
+  
+  // ============= FUN THEME CSS START ===============
+  body.fun-theme {
+    background-image: url(assets/images/bg-svg.webp);
+    background-attachment: fixed;
+    background-size: cover;
+  
+    .theme-chang > li > button {
+      color: var(--light-dark-color);
+    }
+    .theme-chang > li {
+      background-color: var(--white-color);
+    }
+    .theme-chang > li > .Fun {
+      background-color: var(--white-color);
+    }
+
+    .footer-link {
+      color: var(--light-dark-color);
+    }
+  
+    nav{
+      background-color: transparent;
+      background-image: url(assets/images/bg-svg.webp);
+      background-size: cover;
+    }
+    nav .navbar-nav > li {
+      background-color: var(--white-color);
+    }
+    nav .navbar-nav > li > a.active {
+      background-color: var(--light-color);
+    }
+    nav button,
+    nav button:focus,
+    nav button:hover {
+      background-color: var(--white-color);
+      color: var(--green-color);
+      border-color: var(--green-color);
+      box-shadow: 3px 4px 1px 1px var(--green-color);
+    }
+    .navbar-pills-custm{
+      background: #6c757d !important;
+    }
+  }
+  
+  @media(min-width:992px){
+    .uniswap-list-scroll {
+      max-height: 15vmin;
+    }
+  }
+  
+  
+  @media(max-width:991px){
+    .inner-section{
+      margin-top: 20px;
+      margin-bottom: 70px;
+      padding-top: 0px;
+    }
+    .theme-chang{
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+    }
+    .theme-chang > li{
+      width: 100%;
+      justify-content: center;
+      border-radius: 0px !important;
+    }
+    .theme-chang > li > button {
+      width: calc(100% / 3);
+    }
+    .coin-list-popup {
+      
+      max-height: calc(100vh - 110px);
+  }
+  .coin-list-popup label{
+    font-size: 12px;
+  }
+  }
+  @media(min-width:768px){
+    .wrapper {    
+      min-width: 450px;
+    }
+  }
+  
+  
+  .modal-content .modal-body{
+    color: var(--black-color);
+  }
+  .modal-header .btn-close{
+    position: absolute;
+    right:-8px;
+    opacity: 1;
+    background-color: #fff;
+    top: 0;
+  }
+  .simple-swap .card>div>div>div{
+    cursor: pointer;
+  }
+
+
+  .accept-popup .modal-content{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0px 0px 30px #8d8d8d;
+    animation: scale 0.5s ease;
+    text-align: center;
+  }
+  .accept-popup .modal-content p{
+  font-size: 14px;
+  line-height: 20px
+  }
+  .accept-popup .modal-content button{
+    background-color: var(--green-color);
+    color:vaR(--white-color);
+  }
+
+
+  .small, small {
+    font-size: 13px !important;
+}
+
+
+.fw-medium{
+  font-weight: 500;
+}
+.navbar-pills-custm > a,
+.navbar-pills-custm {
+  border-radius: 10px !important;
+}
+.navbar-pills-custm > a.active{
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.tabs-custm-pill > ul.nav-pills .nav-link{
+background-color: transparent;
+border-bottom: 2px solid transparent;
+border-radius: 0;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+margin-right:10px ;
+}
+.tabs-custm-pill > ul.nav-pills .nav-link.active{
+  background-color: transparent;
+  border-color:#54a546;
+  color: #000;
+
+  }

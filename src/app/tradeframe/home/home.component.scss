@@ -1,0 +1,500 @@
+
+
+/* .navbar-brand{
+
+    width: 30%;
+
+} */
+
+.color-logo{
+
+    display:block;
+
+}
+
+.white-logo{
+
+    display: none;
+
+}
+
+.logo-img{
+
+    width:15%;
+
+}
+
+.bg-light {
+
+    background-color: transparent !important;
+
+}
+
+/*.row-height{
+
+    height: 73vh;
+
+}*/
+
+.nav-bg{
+
+    background-color: white;
+
+    border-radius: 10px;
+
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+    color: #303030;
+
+    background-color: #EDEEF2;
+
+    border-radius: 10px;
+
+}
+
+.nav-link {
+
+    color: #303030;
+
+}
+
+.nav-link:hover {
+
+    color: #303030;
+
+}
+
+.nav-link:focus, .nav-link:hover {
+
+    color: #303030;
+
+}
+
+.dawon{
+
+    background-color: #EDEEF2;
+
+    border: 2px solid white;
+
+    border-radius: 5px;
+
+}
+
+.img-posi{
+
+ top: -13%;
+
+ left: 3%;
+
+}
+
+.dawon-img{
+
+    width: 2%;
+
+}
+
+.btn-wallet{
+
+    background-color: #ffff;
+
+    color: #54A546;
+
+    border: 2px solid #54A546;
+
+    box-shadow: 3px 3px 3px 0px #54A546;
+
+}
+
+.btn-wallet:hover{
+
+    color: #54A546;
+
+}
+
+.btn:focus {
+
+    outline: 0;
+
+    box-shadow: none;
+
+}
+
+
+
+.home-bg{
+
+
+}
+
+.eth-nav-bg{
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    border: 2px solid #EDEEF2;
+
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+    color: #303030;
+
+    background-color: #EDEEF2;
+
+    border-radius: 10px;
+
+}
+
+.eth-nav-link {
+
+    color: #303030;
+
+    font-weight: bold;
+
+}
+
+.nav-link:hover {
+
+    color: #303030;
+
+}
+
+
+
+.icon-img{
+
+    width: 8%;
+
+}
+
+.span-text{
+
+    font-size: 12px;
+
+}
+
+ ul li a{
+
+    text-decoration: none;
+
+    color: black;
+
+}
+
+ul li a:hover{
+
+    text-decoration: none;
+
+    color: black;
+
+}
+
+
+
+.col-lg-3.small-screen-them {
+
+    position: absolute;
+
+    bottom: 0px;
+
+}
+
+.home-bg.p-3 {
+    margin-top: 10px;
+}
+.go-text{
+    color: #30316B;
+}
+
+
+
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    margin-left: 66px;
+}
+ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul.tabs li.current{
+     background: #57A14A;
+    color: #303361;
+    border-radius: 10px;
+}
+
+.tab-content{
+    display: none;
+    /* background: #ededed; */
+    /* padding: 15px; */
+}
+.row-fix{
+    margin-top: 25px;
+}
+.tab-content.current{
+    display: block;
+}
+.logo-text{
+    color: #55A546;
+}
+.start-btn{
+    background-color: #54A546;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.start-btn:hover{
+
+    color: white;
+}
+.privecy-text{
+    line-height: 2rem;
+}
+.text-pri{
+    line-height: 2.1rem;
+}
+#tab-1{
+    /* height: 540px; */
+    /* overflow-y: scroll; */
+}
+.terms-text{
+    line-height: 2rem;
+    font-size: 1.2rem;
+}
+#tab-2{
+    /* height: 540px; */
+    /* overflow-y: scroll; */
+}
+
+
+
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+.scrollbar::-webkit-scrollbar {
+    /* background-color:#fff; */
+    width:5px
+}
+
+/* background of the scrollbar except button or resizer */
+.scrollbar::-webkit-scrollbar-track {
+    /* background-color:#fff */
+}
+.scrollbar::-webkit-scrollbar-track:hover {
+    /* background-color:#f4f4f4 */
+}
+
+/* scrollbar itself */
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color:#babac0;
+    border-radius:16px;
+    /* border:5px solid #fff */
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color:#a0a0a5;
+    /* border:4px solid #f4f4f4 */
+}
+
+/* set button(top and bottom of the scrollbar) */
+.scrollbar::-webkit-scrollbar-button {display:none}
+
+/* div box */
+
+.scrollbar {
+    height: 73vh;
+    /* width: 25vw; */
+    min-width: 150px;
+    /* background: #fff; */
+    overflow-y: scroll}
+.overflow{min-height: 100vh}
+
+
+
+
+
+
+
+
+
+@media(max-width:767px){
+    .errer-text{
+        text-align: center;
+    }
+    .color-logo, .white-logo{
+        width: 67px !important; 
+    }
+    .row.justify-content-between{
+        width: 100% !important;
+    }
+    .pop-up-block{
+        width: 270px;
+    }
+    
+
+
+    .bg-light .col-2{
+
+    width: 40% !important;
+    }
+    .bg-light .col-4{
+    width: 60% !important;
+    }
+   
+}
+
+
+@media(max-width:455px){
+
+    .row-height{
+
+        height: 47%;
+
+    }
+
+    .small-screen-nav{
+
+        display: none;
+
+    }
+
+    .small-screen-them{
+
+        display: none;
+
+    }
+
+    .btn-wallet {
+
+        background-color: #ffff;
+
+        color: #54A546;
+
+        font-size: 14px;
+
+        border: 2px solid #54A546;
+
+        box-shadow: 3px 3px 3px 0px #54a546;
+
+    }
+
+    .bigg-screen-nav{
+
+        font-size: 10px;
+
+    }
+   
+
+}
+
+@media(min-width:456px) {
+
+    .small-screen{
+
+        display: none;
+
+    }
+
+    .bigg-screen-nav{
+
+        display: none;
+
+    }
+
+}
+
+
+.row-position{
+    position: absolute;
+    bottom: 0%;
+    left: 15%;
+}
+
+/* new css */
+
+@media(max-width:455px){
+    .nav-link {
+        display: block;
+        padding: 0.2rem 0.3rem;
+    }
+    .row-position{
+        position: static;
+    }
+}
+
+
+.close-tab{
+    position: absolute;
+    right:0px;
+    top:0px;
+    color:#000;
+    text-decoration: none;
+}
+.mg-all.active{
+    display: none !important;
+}
+
+
+/* new css */
+
+.row-fix{
+    margin: 0 auto;
+    width: 441px;
+}
+.logo-text{
+    color: #55A546;
+    font-size: 15px;
+}
+.button-start{
+    margin-top: 50px;
+}
+.privacy{
+    width: 75%;
+    margin: auto;
+}
+
+@media(max-width:600px){
+
+    body{
+
+    
+    }
+    .row.row-fix.justify-content-center.align-items-center {
+        width: 100%;
+    }
+    .button-start{
+        margin-top: 25px;
+    }
+    .privacy{
+        width: 100%;
+    }
+    .terms-text {
+        line-height: 23px;
+        font-size: 1rem;
+    }
+    .scrollbar {
+        height: 62vh;
+        /* width: 25vw; */
+        min-width: 150px;
+        /* background: #fff; */
+        overflow-y: scroll}
+
+        .button-start{
+            margin-bottom: 25px;
+        }
+    .nav-pills{
+        margin-top: 25px;
+    }
+}
+
+
+

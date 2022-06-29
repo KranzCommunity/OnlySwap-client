@@ -1,0 +1,304 @@
+<!-- Banner Start -->
+<div class="wrapper simple-swap mx-auto rounded px-3 py-4">
+    <div class="d-flex justify-content-between wrapper-head mb-3">
+        <div class="d-flex">
+            <a class="active">Swap</a>
+            <!-- <a class="ms-4" routerLink="/classictrade">Limit</a> -->
+        </div>
+        <div class="d-flex">
+            <a class="fas fa-redo me-3" (click)="getSwapQuote()"></a>
+            <a class="fal fa fa-cog" (click)="preserveForm()" routerLink="/settings"></a>
+        </div>
+    </div>
+    <div class="card  px-3 py-2 border-0 rounded-3 mb-2">
+        <div class="d-flex align-items-end justify-content-between">
+            <div>
+                <!-- <small>From</small> -->
+                <div class="text-nowrap d-flex align-items-center justify-content-center v-middle" (click)="showRModal()">
+                    <div class="first-letter bg-secondary bg-opacity-25 d-flex justify-center align-items-center rounded-circle me-2">
+                        <span class="text-uppercase fw-bold w-100 text-muted d-block text-center" *ngIf="!swapform.fromTokenLogo">{{swapform.fromtoken | slice:0:1}}</span>
+                    <img  width="30px" class="m-auto" src="{{swapform.fromTokenLogo}}" alt="Icons"  *ngIf="swapform.fromTokenLogo">
+                    </div>
+                    {{swapform.fromtoken}} <i class="fa fa-angle-down ms-1"></i>
+                </div>
+                              
+            </div>
+                <input type="number" inputmode="numeric" step="0.0001" placeholder="0.0" value="1"
+                    class="form-control  ms-4 bg-transparent border-0 text-end  " [(ngModel)]="swapform.fromamount"
+                    (ngModelChange)="callGetSwapQuoteWithDelay()">
+                <label (click)="setFromAmountToMax()" class="v-middle outline-button">Max</label>
+            
+        </div>
+        <div class="d-flex align-items-end justify-content-between">
+            <small *ngIf="fromTokenBalance && !(swapform.fromtoken == 'ETH' || swapform.fromtoken == 'BNB')"> Balance: {{fromTokenBalance}}</small>
+            <small *ngIf="accountBalance && (swapform.fromtoken == 'ETH' || swapform.fromtoken == 'BNB')"> Balance: {{accountBalance}}</small>
+        </div>
+    </div>
+    <i class="fas fa-arrow-down position-absolute start-50 translate-middle swap-arrow rounded p-1" *ngIf="downarrow" (click)="swapFromToTokens()"></i>
+    <i class="fas fa-arrow-up position-absolute  start-50 translate-middle swap-arrow rounded p-1" *ngIf="!downarrow" (click)="swapFromToTokens()"></i>
+    <div class="card  px-3 py-2 border-0 rounded-3 mt-2">
+        <div class="d-flex align-items-end justify-content-between">
+            <div> 
+                <!-- <small class="text-nowrap">To (estimated)</small> -->
+                <div class="text-nowrap d-flex align-items-center justify-content-center"  (click)="show2Modal()">
+                    <div class="first-letter bg-secondary bg-opacity-25 d-flex justify-center align-items-center rounded-circle me-2">
+                        <span class="text-uppercase fw-bold w-100 text-muted d-block text-center" *ngIf="!swapform.toTokenLogo">{{swapform.totoken | slice:0:1}}</span>
+                    <img  width="30px" class="m-auto" src="{{swapform.toTokenLogo}}" alt="Icons"  *ngIf="swapform.toTokenLogo">
+                    </div>
+                    {{swapform.totoken}} <i class="fa fa-angle-down ms-1"></i>
+                </div>                           
+            </div>
+            <input placeholder="" value="1" [(ngModel)]="swapform.toamount" readonly
+            class="form-control  ms-4 bg-transparent border-0 text-end  ">
+        </div> 
+        <figure class="onlyswap rounded-3 px-2 pb-2 position-relative  mb-0 mt-4 pt-4" *ngIf="this.bestQuote">
+            <figcaption class="position-absolute d-inline-block w-auto">Best quote</figcaption>
+            <fieldset class="text-nowrap d-flex justify-content-between align-items-center">
+                <span>OnlySwap ({{bestQuote.exchangeName}})</span>
+                <h5 class="mb-0">{{bestQuote.expectedConvertQuoteInString}}</h5>
+            </fieldset>
+            <fieldset class="text-nowrap d-flex justify-content-between align-items-center pt-2">
+                <span>Liquidity Provider Fee</span>
+                <span>~{{bestQuote.liquidityProviderFee}} {{bestQuote.routePathArrayTokenMap[0].symbol}}</span>
+            </fieldset>
+            <div class="d-flex justify-content-center align-items-center w-100 text-center pt-2">
+                <a class="fa fa-angle-down d-flex justify-content-center align-items-center collpse-card"
+                    (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                    aria-controls="collapseBasic"></a>
+            </div>
+            <div class="overflow-auto uniswap-list-scroll">
+                <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true" class="uniswap-list rounded-3 p-3 my-2"
+                *ngFor="let quote of tradeQuote; index as i">
+                <p class="mb-0 d-flex align-items-center justify-content-between">
+                   <span> {{quote.exchangeName}}</span>
+                    <strong>{{quote.expectedConvertQuoteInString}} {{quote.routePathArrayTokenMap[quote.routePathArrayTokenMap.length-1].symbol}}</strong>
+                </p>
+            </div>
+            </div>
+        </figure>
+    </div>
+    <button *ngIf="approvalPending" (click)="addAllowance()" class="btn text-center d-block w-100 btn-lg swap-button rounded-3 mt-3">
+        <span>Approve</span>
+    </button>
+    <button *ngIf="!swapDisabled && !approvalPending" (click)="sendTrade()" class="btn text-center d-block w-100 btn-lg swap-button rounded-3 mt-3">
+        <span>Swap</span>
+    </button>
+    <button *ngIf="swapDisabled && !approvalPending" class="btn text-center d-block w-100 btn-lg swap-button rounded-3 mt-3">
+        <span>Insufficient balance</span>
+    </button>
+</div>
+
+
+
+
+   
+<ngx-spinner></ngx-spinner>
+<!-- Banner End -->
+<ng-template #walletConnect>
+    <div class="modal-content border-0 modal-content-bg">
+        <div class="modal-header border-0 pb-0">
+            <b>{{modalHeader}}</b>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body overflow-auto" style="text-overflow: ellipsis;">
+            {{modalBody}}
+        </div>
+    </div>
+</ng-template>
+<ng-template #txSubmitted>
+    <div class="modal-content border-0 modal-content-bg">
+        <div class="modal-header border-0 pb-0">
+            {{modalHeader}}
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body overflow-auto" style="text-overflow: ellipsis;">
+            Your transaction ID is <br>
+            {{modalBody}}
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="copyTx(modalBody)" class="btn swap-button mx-1">Copy Transaction ID</button>
+            <a *ngIf="network.chainId == 1" href="https://etherscan.io/tx/{{modalBody}}" class="btn swap-button mx-1">View on Explorer</a>
+            <a *ngIf="network.chainId == 56" href="https://bscscan.com/tx/{{modalBody}}" class="btn swap-button mx-1">View on Explorer</a>
+        </div>
+    </div>
+</ng-template>
+<div class="modal fade" bsModal #metamaskReject="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content text-white border-0 modal-content-bg">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="metamaskReject.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Connect the wallet first!
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" bsModal #metamaskAccept="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="dialog-static-name">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content text-white border-0 modal-content-bg">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close close pull-right" aria-label="Close"
+                    (click)="metamaskAccept.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Connect the wallet first!
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!--from start swap-->
+ 
+ <!-- <div class="modal fade" bsModal #staticRModal="bs-modal" [config]="{backdrop: 'static'}"
+ tabindex="-1" role="dialog" aria-labelledby="dialog-static-name"> -->
+ <ng-template #staticRModal>
+<div class="modal-dialog m-0">
+<div class="modal-content">
+  <div class="modal-header">
+    <input placeholder="Search Token or Add Custom Address" type="search" [(ngModel)]="search.from"
+        class="form-control rounded-pill w-75" (keyup)="searchToken()" >
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="staticRModalRef.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body coin-list-popup overflow-auto p-0">   
+    <div *ngIf="!newToken.address">
+        <div class="w-100"  *ngFor="let item of tokensList | searchInLoop: search.from"
+            (click)="staticRModalRef.hide(); changeFromToken(item)" role="menuitem"><a class="dropdown-item d-flex align-items-center">
+                <div class="first-letter bg-secondary bg-opacity-25 d-flex justify-center align-items-center rounded-circle me-2">
+                    <span class="text-uppercase fw-bold w-100 text-muted d-block text-center" *ngIf="item.isNewToken">{{item.symbol | slice:0:1}}</span>
+                    <img class="dropdownlogo mx-auto" src="{{item.logoURI}}" *ngIf="!item.isNewToken">
+                </div>
+                <label class="text-uppercase mb-0 d-flex flex-column align-center">
+                        <span>{{item.name}}</span>
+                        <small class="text-muted">{{item.symbol}}</small>
+                    </label>
+            </a>
+            <hr class="bg-opacity-25 bg-black my-1">
+        </div>
+    </div>
+    <div *ngIf="newToken.address"><!--*ngIf="newToken.address"-->
+        <div class="text-danger bg-danger bg-opacity-10 d-block p-2 rounded" >
+            <h4><i class="fa fa-warning"></i>Trade at your own risk!</h4>
+            <small>Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects.</small>
+            <br>
+            <small>If you purchase this token, you may not be able to sell it back.</small>
+        </div>
+        <div class="bg-light py-3 px-2 rounded mt-3" style="font-size: 14px;">
+            <p class="mb-0">Address: {{newToken.address}}</p>
+            <hr class="bg-opacity-25 bg-black">
+            <p class="mb-0">Name: {{newToken.name}}</p>
+            <hr class="bg-opacity-25 bg-black">
+            <!-- <p class="mb-0">Symbol: {{newToken.symbol}}</p>
+            <hr class="bg-opacity-25 bg-black">
+            <p class="mb-0">Decimals: {{newToken.decimals}}</p>
+            <hr class="bg-opacity-25 bg-black"> -->
+            <div class="d-flex justify-center">
+            <button type="button" class="btn btn-danger px-5  mx-auto" (click)="importToken()">
+              Import
+            </button>
+            </div>
+            </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+</ng-template>
+<!-- </div> -->
+<!--from end swap-->
+
+
+ <!--To start swap-->
+ 
+ <!-- <div class="modal fade" bsModal #static2Modal="bs-modal" [config]="{backdrop: 'static'}"
+ tabindex="-1" role="dialog" aria-labelledby="dialog-static-name"> -->
+ <ng-template #static2Modal>
+<div class="modal-dialog m-0">
+<div class="modal-content">
+  <div class="modal-header">
+    <input placeholder="Search Token or Add Custom Address" [(ngModel)]="search.to" type="search"
+    class="form-control rounded-pill w-75" (keyup)="searchToken()" >
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="static2ModalRef.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body coin-list-popup overflow-auto p-0">   
+    
+    <div *ngIf="!newToken.address">
+        <div class="w-100"  *ngFor="let item of tokensList | searchInLoop: search.to"
+            (click)="static2ModalRef.hide(); changeToToken(item)" role="menuitem"><a class="dropdown-item ">
+                <div class="d-flex align-items-center">
+                    <div class="first-letter bg-secondary bg-opacity-25 d-flex justify-center align-items-center rounded-circle me-2">
+                        <span class="text-uppercase fw-bold w-100 text-muted d-block text-center" *ngIf="item.isNewToken">{{item.symbol | slice:0:1}}</span>
+                        <img class="dropdownlogo mx-auto" src="{{item.logoURI}}" *ngIf="!item.isNewToken">
+                    </div>
+                  
+                    <label class="text-uppercase mb-0 d-flex flex-column align-center">
+                        <span>{{item.name}}</span>
+                        <small class="text-muted">{{item.symbol}}</small>
+                    </label>
+                </div>
+            </a>
+            <hr class="bg-opacity-25 bg-black my-1">
+        </div>
+    </div>
+    <!--  *ngIf="newToken.address" -->
+    <div *ngIf="newToken.address">
+        <div class="text-danger bg-danger bg-opacity-10 d-block p-2 rounded" >
+            <h4><i class="fa fa-warning"></i>Trade at your own risk!</h4>
+            <small>Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects.</small>
+            <br>
+            <small>If you purchase this token, you may not be able to sell it back.</small>
+        </div>
+        <div class="bg-light py-3 px-2 rounded mt-3" style="font-size: 14px;">
+            <p class="mb-0">Address: {{newToken.address}}</p>
+            <hr class="bg-opacity-25 bg-black">
+            <p class="mb-0">Name: {{newToken.name}}</p>
+            <hr class="bg-opacity-25 bg-black">
+            <!-- <p class="mb-0">Symbol: {{newToken.symbol}}</p>
+            <hr class="bg-opacity-25 bg-black">
+            <p class="mb-0">Decimals: {{newToken.decimals}}</p>
+            <hr class="bg-opacity-25 bg-black"> -->
+            <div class="d-flex justify-center">
+                <button type="button" class="btn btn-danger px-5  mx-auto" (click)="importToken()">
+                    Import
+                  </button>
+            </div>
+            
+        </div>
+       
+            
+               
+           
+     
+    </div>
+  </div>
+</div>
+</div>
+</ng-template>
+
+<style>
+    .first-letter{
+        min-width: 30px;
+        max-width: 30px;
+        min-height: 30px;
+        max-width: 30px;
+        overflow: hidden;
+    }
+</style>
+<!-- </div> -->
+<!--To end swap-->
+

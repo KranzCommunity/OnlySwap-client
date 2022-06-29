@@ -1,0 +1,182 @@
+
+
+.scrollbar {
+    height: 73vh;
+    /* width: 25vw; */
+    min-width: 150px;
+    /* background: #fff; */
+    overflow-y: scroll}
+.overflow{min-height: 100vh}
+
+@media(max-width:767px){
+    .errer-text{
+        text-align: center;
+    }
+    .color-logo, .white-logo{
+        width: 67px !important; 
+    }
+    .row.justify-content-between{
+        width: 100% !important;
+    }
+    .pop-up-block{
+        width: 270px;
+    }
+    
+
+
+    .bg-light .col-2{
+
+    width: 40% !important;
+    }
+    .bg-light .col-4{
+    width: 60% !important;
+    }
+   
+}
+
+
+@media(max-width:455px){
+
+    .row-height{
+
+        height: 47%;
+
+    }
+
+    .small-screen-nav{
+
+        display: none;
+
+    }
+
+    .small-screen-them{
+
+        display: none;
+
+    }
+
+    .btn-wallet {
+
+        background-color: #ffff;
+
+        color: #54A546;
+
+        font-size: 14px;
+
+        border: 2px solid #54A546;
+
+        box-shadow: 3px 3px 3px 0px #54a546;
+
+    }
+
+    .bigg-screen-nav{
+
+        font-size: 10px;
+
+    }
+   
+
+}
+
+@media(min-width:456px) {
+
+    .small-screen{
+
+        display: none;
+
+    }
+
+    .bigg-screen-nav{
+
+        display: none;
+
+    }
+
+}
+
+
+.row-position{
+    position: absolute;
+    bottom: 0%;
+    left: 15%;
+}
+
+/* new css */
+
+@media(max-width:455px){
+    .nav-link {
+        display: block;
+        padding: 0.2rem 0.3rem;
+    }
+    .row-position{
+        position: static;
+    }
+}
+
+
+.close-tab{
+    position: absolute;
+    right:0px;
+    top:0px;
+    color:#000;
+    text-decoration: none;
+}
+.mg-all.active{
+    display: none !important;
+}
+
+
+/* new css */
+
+.row-fix{
+    margin: 0 auto;
+    width: 441px;
+}
+.logo-text{
+    color: #55A546;
+    font-size: 15px;
+}
+.button-start{
+    margin-top: 50px;
+}
+.privacy{
+    width: 75%;
+    margin: auto;
+}
+
+@media(max-width:600px){
+
+    body{
+
+    
+    }
+    .row.row-fix.justify-content-center.align-items-center {
+        width: 100%;
+    }
+    .button-start{
+        margin-top: 25px;
+    }
+    .privacy{
+        width: 100%;
+    }
+    .terms-text {
+        line-height: 23px;
+        font-size: 1rem;
+    }
+    .scrollbar {
+        height: 62vh;
+        /* width: 25vw; */
+        min-width: 150px;
+        /* background: #fff; */
+        overflow-y: scroll}
+
+        .button-start{
+            margin-bottom: 25px;
+        }
+    .nav-pills{
+        margin-top: 25px;
+    }
+}
+
+
+

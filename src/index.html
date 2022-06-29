@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Onlyswap</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <script src="./assets/scripts/web3.min.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+        if (typeof web3 !== "undefined") {
+          // Use Mist/MetaMask's provider
+          window.web3 = new Web3(web3.currentProvider);
+        } else {
+          console.log("No web3? You should consider trying MetaMask!");
+          // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+          window.web3 = new Web3(
+            new Web3.providers.HttpProvider("http://localhost:8545")
+          );
+        }
+      });
+    </script>
+
+    <script>
+      window.Buffer = window.Buffer;
+
+      var process = process || {
+        env: { DEBUG: undefined },
+        version: []
+      };
+
+      if(window['global'] === undefined){ window['global'] = window }
+    </script>
+    <app-root></app-root>
+  </body>
+</html>

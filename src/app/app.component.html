@@ -1,0 +1,172 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+	<div class="container-xxl align-items-lg-center align-items-start position-relative">
+		<a class="navbar-brand me-0 py-0" href="https://onlyswap.com/">
+			<img src="../assets/images/logo_new.png" alt="Logo">
+		</a>
+
+		<div class="collapse navbar-collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+			<ul class="navbar-nav mx-auto">
+				<li class="nav-item rounded-3 py-1 px-2 d-inline-flex">
+					<a class="nav-link rounded-3" href="https://onlyswap.com">
+						Home
+					</a>
+				</li>
+				<li class="nav-item rounded-3 py-1 px-2 d-inline-flex ms-xl-3">
+					<a class="nav-link rounded-3" routerLink="/simpleswap" routerLinkActive="active">
+						Simple Swap
+					</a>
+					<a class="nav-link rounded-3" routerLink="/classictrade" routerLinkActive="active">
+						Advanced Swap
+					</a>
+				</li>
+				<li class="nav-item  position-relative  d-inline-flex align-items-center py-1 px-2 rounded-3 ms-xl-3 ms-lg-1">
+					<a class="nav-link   rounded-3">
+						Buy Kranz
+						<i class="fas fa-caret-down"></i>
+					</a>
+					<ul class="sub-menu list-unstyled">
+						<li>
+							<a class="d-block p-2"
+								href="https://app.uniswap.org/#/swap?slippage=500&outputCurrency=0xf54b304e2e4b28c7e46619d1a340f9b2b72383d7&use=V2">Uniswap</a>
+							<a class="d-block p-2"
+								href="https://pancakeswap.finance/swap#/swap?outputCurrency=0xf54b304e2e4b28c7e46619d1a340f9b2b72383d7">Pancakeswap</a>
+							<a class="d-block p-2" href="https://www.xt.com/trade/krz_usdt">XT.com</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<ul class="nav-btn mb-0 ps-0">
+			<li class="nav-item  position-relative  d-inline-flex align-items-center  rounded-3">
+				<button class="btn me-xl-1 me-0 px-1" type="button" *ngIf="networkId && networkId != 56" id="dropdownMenuButton"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="../assets/images/icons/ethereum.png" class="networkicon" alt="Icons">
+					Ethereum Mainnet
+					<i class="fas fa-caret-down"></i>
+				</button>
+				<button class="btn px-1" type="button" *ngIf="networkId == 56">
+					<img src="../assets/images/icons/bnb.png" class="networkicon" alt="Icons">
+					BSC Mainnet
+					<i class="fas fa-caret-down"></i>
+				</button>
+				<ul class="sub-menu network-sub-menu list-unstyled">
+					<li>
+						<a class="d-block p-2" (click)="changeNetwork(1)">
+							<img src="../assets/images/icons/ethereum.png" class="networkicon" alt="Icons">
+							Ethereum 
+						</a>
+						<a class="d-block p-2" (click)="changeNetwork(56)">
+							<img src="../assets/images/icons/bnb.png" class="networkicon" alt="Icons">
+							BSC 
+						</a>
+					</li>
+				</ul>
+			</li>
+			<!-- <button class="btn me-3" type="button" (click)="changeNetwork(56)" *ngIf="chainId && chainId != 56" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <img src="../assets/images/icons/ethereum.png" class="networkicon" alt="Icons">
+		  Ethereum
+		</button> -->
+			<button class="btn d-inline-flex align-items-center btn-lg px-1  ms-sm-2">
+				<i class="fas fa-wallet wallet-img me-2"></i>
+				<span *ngIf="!userAcc" (click)="connectWallet()">
+					Connect Wallet
+				</span>
+				<span class="pe-3" *ngIf="userAcc">
+					{{userAccDisplay}}
+				</span>
+				<span *ngIf="userAcc">
+					{{accountBalance}}
+				</span>
+			</button>
+		</ul>
+		<button class="navbar-toggler me-0" type="button" (click)="isCollapsed = !isCollapsed"
+			[attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+	</div>
+</nav>
+<div class="modal fade accept-popup" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+	aria-labelledby="dialog-static-name">
+	<div class="modal-dialog">
+		<div class="modal-content">			
+			<div class="modal-body p-0">
+				<div class="d-flex justify-content-center align-items-center mb-4">
+					<img class="mx-auto" width="150px" src="../assets/images/logo_new.png" alt="Logo">
+				</div>
+				
+				<p> I certify that I understand and accept the Terms of Service and have sufficient knowledge to
+					participate in any activity on OnlySwap.</p>
+				<p>I certify that I understand and accept that OnlySwap is a NEW and DEVELOPING Decentralized Exchange
+					Aggregator that is continually being improved.M</p>
+				<p>I certify that I understand and accept the risks involved with utilizing OnlySwap to perform
+					transactions on the Ethereum Network and Binance Smart Chain.</p>
+				<p>I certify that I am not the person who resides in, are citizens of, are incorporated in, or have a
+					registered office in the United States of America or any Prohibited Localities, as defined in the
+					Terms of Use.</p>
+				<p>I will not in the future access this site or use OnlySwap while located within the United States or
+					any other Prohibited Localities, as defined in the Terms of Service.</p>
+
+					<div class="d-flex justify-content-center align-items-center">
+						<button class="btn  text-uppercase fw-bold" (click)="staticModal.hide()">i accept</button>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ng-template #tosPopup>	
+	<div class="modal-body p-0">
+		<div class="d-flex justify-content-center align-items-center mb-4">
+			<img class="mx-auto" width="150px" src="../assets/images/logo_new.png" alt="Logo">
+		</div>
+		
+		<p> I certify that I understand and accept the Terms of Service and have sufficient knowledge to
+			participate in any activity on OnlySwap.</p>
+		<p>I certify that I understand and accept that OnlySwap is a NEW and DEVELOPING Decentralized Exchange
+			Aggregator that is continually being improved.M</p>
+		<p>I certify that I understand and accept the risks involved with utilizing OnlySwap to perform
+			transactions on the Ethereum Network and Binance Smart Chain.</p>
+		<p>I certify that I am not the person who resides in, are citizens of, are incorporated in, or have a
+			registered office in the United States of America or any Prohibited Localities, as defined in the
+			Terms of Use.</p>
+		<p>I will not in the future access this site or use OnlySwap while located within the United States or
+			any other Prohibited Localities, as defined in the Terms of Service.</p>
+
+			<div class="d-flex justify-content-center align-items-center">
+				<button class="btn  text-uppercase fw-bold" (click)="acceptToc()">i accept</button>
+			</div>
+	</div>
+</ng-template>
+
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="inner-section">
+	<router-outlet></router-outlet>
+	<!-- <div class="row fixed-bottom">
+		<div class="offset-4 col-4 my-4 text-center">
+			<a href="https://docs.google.com/forms/d/1qY6BBcfXIcQfdFkyA_obnOtzCcQU7mVd6Jzv4hksXeE/edit" target="_
+			blank" class="footer-link">Give us your feedback</a>
+		</div>
+	</div> -->
+	<ul style="z-index: 2000;" class="nav nav-pills my-lg-3 my-0 justify-content-center theme-chang position-fixed" id="pills-tab"
+		role="tablist">
+		<li class="nav-item d-flex nav-bg p-1 rounded-3" role="presentation">
+			<button (click)="theme('light-theme')" class="nav-link Light rounded-3">Light</button>
+			<button (click)="theme('dark-theme')" class="nav-link Dark rounded-3">Dark</button>
+			<button (click)="theme('fun-theme')" class="nav-link Fun rounded-3">Fun</button>
+		</li>
+	</ul>
+</div>
+
+<ng-template #walletConnect>
+    <div class="modal-header border-0 pb-0">
+		<b>{{modalHeader}}</b>
+		<button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			<span aria-hidden="true" class="visually-hidden">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body overflow-auto" style="text-overflow: ellipsis;">
+		{{modalBody}}
+	</div>
+</ng-template>

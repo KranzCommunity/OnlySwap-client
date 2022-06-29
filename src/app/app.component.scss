@@ -1,0 +1,116 @@
+.sub-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 9;
+  opacity: 0;
+  width: 200px;
+  border-radius: 5px;
+  visibility: hidden;
+  box-shadow: 0px 12px 40px #00000026;
+  -webkit-transition: all 0.5s;
+}
+.network-sub-menu {
+  width: 220px;
+}
+.networkicon {
+  max-width: 36px;
+}
+nav li:hover .sub-menu,
+nav li:focus .sub-menu {
+  opacity: 1;
+  visibility: visible;
+}
+nav .navbar-nav > li > a {
+  font-size: 14px;
+}
+nav button {
+  font-size: 14px;
+  max-height: 40px;
+  min-height: 40px;
+  border-width: 2px;
+  border-style: solid;
+  margin-right: 10px;
+}
+nav button > img {
+  max-width: 25px;
+}
+nav .navbar-brand > img {
+  width: 80px;
+}
+// .navbar {
+//   top: 10px;
+// }
+@media (max-width: 991px) {
+  // .navbar {
+  //   padding-top: 0px;
+  //   padding-bottom: 0px;
+  // }
+  .navbar-collapse {
+    width: 100%;
+    top: 50px;
+    position: absolute;
+    left: 0;
+    filter: drop-shadow(2px 4px 6px #00000010);
+  }
+  .navbar-collapse > ul > li {
+    border-radius: 0px !important;
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar-collapse > ul > li > a {
+    display: block;
+    width: 100%;
+  }
+  .navbar-collapse[aria-expanded="true"] {
+    display: block;
+  }
+  nav button {
+    min-height: 35px;
+    max-height: 35px;
+  }
+  nav .navbar-brand > img {
+    max-width: 50px;
+  }
+  nav button img {
+    max-width: 20px;
+  }
+  .nav-btn button {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 992px) and (min-width:461px) {
+  .nav-btn > li{
+      padding-right: 5px;
+  }
+    }
+@media (max-width: 460px) {
+  .nav-btn {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+  }
+  .nav-btn button {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .nav-btn > li > button{
+    margin-bottom: 10px;
+}
+}
+@media(min-width:992px){
+  .navbar-brand{
+    position: absolute;
+  }
+  .nav-btn{
+    position: absolute;
+    right: 0;
+  }
+}
+@media(max-width:1200px) and (min-width:992px){
+  .nav-btn button{
+    font-size: 12px;
+  }
+}

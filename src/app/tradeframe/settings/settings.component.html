@@ -1,0 +1,80 @@
+<div class="wrapper mx-auto rounded px-3 py-4">
+    <div class="d-flex align-items-center justify-content-between pb-4">
+        <!-- <a routerLink="/simpleswap"><i class="fa fa-chevron-left"></i></a> -->
+        <a (click)="back()"><i class="fa fa-chevron-left"></i></a>
+        <h6 class="mb-0">Settings</h6>
+        <a (click)="reset()">Reset</a>
+    </div>
+    <hr class="my-0">
+
+    <div class="d-flex justify-content-between pt-3 align-items-center">
+        <h6 class="mb-0">Gas</h6>
+        <label>{{gasMethodNames[selectedMethod]}} ({{estimateData[selectedMethod].gasPrice.toFixed(2)}} Gwei)</label>
+    </div>
+    <div class="rounded-3 setting-inner mt-3"> 
+        <label class="d-flex justify-content-between align-items-center mb-0 px-3  py-3" for="select1">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="method" [value]="2" [(ngModel)]="selectedMethod" (change)="changeMethod(2)" id="select1">
+                <h6 class="mb-0 mx-3">
+                    Fast
+                    <small class="fa fa-star text-warning ms-1" style="font-size: 12px;"></small>
+                </h6>
+            </div>
+            <h6 class="mb-0">{{estimateData[2].gasPrice.toFixed(2)}} Gwei</h6>                        
+        </label>
+        <label class="d-flex justify-content-between align-items-center mb-0 px-3 border-bottom border-top  py-3" for="select2">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="method" [value]="1" [(ngModel)]="selectedMethod" (change)="changeMethod(1)" id="select2">
+                <h6 class="mb-0 mx-3">Average</h6>
+            </div>
+            <h6 class="mb-0">{{estimateData[1].gasPrice.toFixed(2)}} Gwei</h6>                
+        </label>
+        <label class="d-flex justify-content-between align-items-center mb-0 px-3  py-3" for="select3">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="method" [value]="0" [(ngModel)]="selectedMethod" (change)="changeMethod(0)" id="select3" checked="true">
+                <h6 class="mb-0 mx-3">Low</h6>
+            </div>
+            <h6 class="mb-0">{{estimateData[0].gasPrice.toFixed(2)}} Gwei</h6>                
+        </label>            
+    </div>
+    <div class="d-flex justify-content-between pt-3 align-items-center">
+        <h6 class="mb-0">Slippage</h6>
+        <label>{{slippage * 100}}%</label>
+    </div>
+    <div class="rounded-3 setting-inner mt-3"> 
+        <label class="d-flex justify-content-between align-items-center mb-0 px-3  py-3" for="s1">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="slippage" value="0.005" [(ngModel)]="selectedSlippage" (change)="changeSlippage(0.005)" id="s1">
+                <h6 class="mb-0 mx-3">
+                    Minor price change
+                </h6>
+                <small> For popular tokens</small>
+            </div>
+            <h6 class="mb-0">0.5%</h6>                        
+        </label>
+        <label class="d-flex justify-content-between align-items-center mb-0 px-3 border-bottom border-top  py-3" for="s2">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="slippage" value="0.01" [(ngModel)]="selectedSlippage" (change)="changeSlippage('0.01')" id="s2">
+                <h6 class="mb-0 mx-3">Moderate price change</h6>
+                <small> For newer tokens</small>
+            </div>
+            <h6 class="mb-0">1%</h6>                
+        </label>
+        <label class="d-flex justify-content-between align-items-center mb-0 px-3  py-3" for="s3">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="slippage" value="0.05" [(ngModel)]="selectedSlippage" (change)="changeSlippage('0.05')" id="s3">
+                <h6 class="mb-0 mx-3">High price change</h6>
+                <small>For low liquidity tokens</small>
+            </div>
+            <h6 class="mb-0">5%</h6>                
+        </label>
+        <label class="d-flex align-items-center mb-0 px-3  py-3 border-top" for="s4">
+            <input type="radio" name="slippage" value="0" [checked]="selectedSlippage == '0'" [(ngModel)]="selectedSlippage" (change)="changeSlippage('0')" id="s4">
+            <div class="d-flex align-items-center">
+                <h6 class="mb-0 mx-3">Custom</h6>
+            </div>
+            <input type="number" class="right-align slippage-input text-center" (focus)="changeSlippage('0')" [(ngModel)]="customSlippage" (ngModelChange)="validateSlippage()" step="0.1" max="50" min="0.1" id="select4"> %                
+        </label>            
+    </div>
+</div>
+

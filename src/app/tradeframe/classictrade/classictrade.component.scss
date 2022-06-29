@@ -1,0 +1,12 @@
+.wrapper{
+    min-width: 100%;
+}
+
+ul>li>label,
+legend{
+    font-size: 13px;
+}
+.chart{
+    min-height: calc(338px);
+    overflow: hidden;
+}
